@@ -1,0 +1,37 @@
+class Button:
+    def click(self):
+        raise NotImplementedError()
+
+
+class WindowsButton(Button):
+    def click(self):
+        return "Windows button"
+
+
+class MacOSButton(Button):
+    def click(self):
+        return "MacOS button"
+
+
+class GUIFactory:
+    def create_button(self):
+        raise NotImplementedError()
+
+
+class WindowsFactory(GUIFactory):
+    def create_button(self):
+        return WindowsButton()
+
+
+class MacOSFactory(GUIFactory):
+    def create_button(self):
+        return MacOSButton()
+
+windows_factory = WindowsFactory()
+macos_factory = MacOSFactory()
+
+button1 = windows_factory.create_button()
+button2 = macos_factory.create_button()
+
+print(button1.click())
+print(button2.click())
